@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тапни 272 раза!</title>
+    <title>Clicker Game</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,7 +19,7 @@
         #clickButton:active {
             transform: scale(1.1);
         }
-        #nextPageButton {
+        #nextPageButton, #upgradeButton {
             display: none;
             font-size: 20px;
             padding: 15px;
@@ -32,32 +32,33 @@
     <h1>Clicker Game</h1>
     <p>Очки: <span id="score">0</span></p>
     <button id="clickButton">Тапай!</button>
-    <p>Уровень: <span id="level">1</span></p>
+    <button id="upgradeButton">Улучшить</button>
     <button id="nextPageButton" onclick="window.location.href='page2.html'">Перейти на вторую страницу</button>
     
     <script>
         let score = 0;
-        let level = 1;
         let pointsPerClick = 1;
-        
         const scoreDisplay = document.getElementById('score');
-        const levelDisplay = document.getElementById('level');
         const clickButton = document.getElementById('clickButton');
         const nextPageButton = document.getElementById('nextPageButton');
+        const upgradeButton = document.getElementById('upgradeButton');
         
         clickButton.addEventListener('click', () => {
             score += pointsPerClick;
             scoreDisplay.textContent = score;
             
-            if (score >= level * 10) {
-                level++;
-                levelDisplay.textContent = level;
-                pointsPerClick++;
+            if (score >= 50) {
+                upgradeButton.style.display = 'block';
             }
             
             if (score >= 272) {
                 nextPageButton.style.display = 'block';
             }
+        });
+        
+        upgradeButton.addEventListener('click', () => {
+            pointsPerClick *= 2;
+            upgradeButton.style.display = 'none';
         });
     </script>
 </body>
