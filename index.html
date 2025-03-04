@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clicker Game</title>
+    <title>Привет! Тапай (сначала 50 раз)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -26,10 +26,14 @@
             margin-top: 20px;
             cursor: pointer;
         }
+        #nextPageButton {
+            margin-top: 40px;  /* Большее расстояние от остальных кнопок */
+            font-size: 18px;  /* Уменьшение размера текста, чтобы кнопка не была слишком заметной */
+        }
     </style>
 </head>
 <body>
-    <h1 id="gameTitle">Clicker Game</h1>
+    <h1 id="gameTitle">Привет! Тапай (сначала 50 раз)</h1>
     <p>Очки: <span id="score">0</span></p>
     <button id="clickButton">Тапай!</button>
     <button id="upgradeButton">Улучшить</button>
@@ -52,12 +56,12 @@
 
             // Изменить название игры после 50 кликов
             if (score >= 50 && score < 272) {
-                gameTitle.textContent = "Тапай дальше";
+                gameTitle.textContent = "Отлично улучши себя и тапай дальше!";
             }
 
             // Изменить название игры после 272 кликов
             if (score >= 272) {
-                gameTitle.textContent = "Умница";
+                gameTitle.textContent = "Победа! Получи награду!";
                 nextPageButton.style.display = 'block';
                 clickButton.style.display = 'none';
                 upgradeButton.style.display = 'none';
