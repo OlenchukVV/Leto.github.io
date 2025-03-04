@@ -19,7 +19,7 @@
         #clickButton:active {
             transform: scale(1.1);
         }
-        #nextPageButton, #upgradeButton, #congratsMessage {
+        #nextPageButton, #upgradeButton, #congratsMessage, #secondUpgradeButton {
             display: none;
             font-size: 20px;
             padding: 15px;
@@ -27,8 +27,8 @@
             cursor: pointer;
         }
         #nextPageButton {
-            margin-top: 100px;  /* Большой отступ снизу для кнопки "Перейти на вторую страницу" */
-            font-size: 18px;  /* Уменьшение размера текста, чтобы кнопка не была слишком заметной */
+            margin-top: 100px;
+            font-size: 18px;
         }
     </style>
 </head>
@@ -37,6 +37,7 @@
     <p>Очки: <span id="score">0</span></p>
     <button id="clickButton">Тапай!</button>
     <button id="upgradeButton">Улучшить</button>
+    <button id="secondUpgradeButton">Вторая улучшалка</button>
     <button id="nextPageButton" onclick="window.location.href='page2.html'">Перейти на вторую страницу</button>
     <p id="congratsMessage">ТЫ НАТАПАЛ 272 РАЗА! Поздравляем!</p>
     
@@ -47,6 +48,7 @@
         const clickButton = document.getElementById('clickButton');
         const nextPageButton = document.getElementById('nextPageButton');
         const upgradeButton = document.getElementById('upgradeButton');
+        const secondUpgradeButton = document.getElementById('secondUpgradeButton');
         const congratsMessage = document.getElementById('congratsMessage');
         const gameTitle = document.getElementById('gameTitle');
         
@@ -55,8 +57,18 @@
             scoreDisplay.textContent = score;
 
             // Изменить название игры после 50 кликов
-            if (score >= 50 && score < 272) {
+            if (score >= 50 && score < 150) {
                 gameTitle.textContent = "Отлично улучши себя и тапай дальше!";
+            }
+
+            // Показываем первую улучшалку после 50 кликов
+            if (score >= 50) {
+                upgradeButton.style.display = 'block';
+            }
+
+            // Показываем вторую улучшалку после 150 кликов
+            if (score >= 150) {
+                secondUpgradeButton.style.display = 'block';
             }
 
             // Изменить название игры после 272 кликов
@@ -65,17 +77,19 @@
                 nextPageButton.style.display = 'block';
                 clickButton.style.display = 'none';
                 upgradeButton.style.display = 'none';
+                secondUpgradeButton.style.display = 'none';
                 congratsMessage.style.display = 'block';
-            }
-
-            if (score >= 50) {
-                upgradeButton.style.display = 'block';
             }
         });
 
         upgradeButton.addEventListener('click', () => {
             pointsPerClick *= 2;
-            upgradeButton.remove();  // Удаление кнопки "Улучшить"
+            upgradeButton.style.display = 'none';  // Убираем первую улучшалку
+        });
+
+        secondUpgradeButton.addEventListener('click', () => {
+            pointsPerClick *= 2;
+            secondUpgradeButton.style.display = 'none';  // Убираем вторую улучшалку
         });
     </script>
 </body>
