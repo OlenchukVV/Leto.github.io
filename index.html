@@ -106,9 +106,10 @@
                 gameTitle.textContent = "Отлично улучши себя и тапай дальше!";
             }
 
-                        // Изменить название игры после 150 кликов
+            
+            // Изменить название игры после 150 кликов
             if (score >= 150 && score < 272) {
-                gameTitle.textContent = "Так держать! Осталось немного..";
+                gameTitle.textContent = "Так держать! Продолжай, ещё немного..";
             }
 
             // Показываем первую улучшалку после 50 кликов
@@ -123,6 +124,8 @@
 
             // Изменить название игры после 272 кликов
             if (score >= 272) {
+                score = 272;  // Устанавливаем всегда 272 очков
+                scoreDisplay.textContent = score;
                 gameTitle.textContent = "Победа! Получи награду!";
                 nextPageButton.style.display = 'block';
                 clickButton.style.display = 'none';
