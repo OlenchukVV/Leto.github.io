@@ -63,7 +63,7 @@
         
         upgradeButton.addEventListener('click', () => {
             pointsPerClick *= 2;
-            upgradeButton.style.display = 'none';  // Скрыть кнопку после клика
+            upgradeButton.remove();  // Удаление кнопки "Улучшить" с страницы
         });
     </script>
 </body>
