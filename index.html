@@ -62,9 +62,6 @@
             margin-top: 30px;
             display: none;
         }
-        .hidden {
-            display: none;
-        }
         @media (max-width: 768px) {
             h1 {
                 font-size: 2em;
@@ -84,9 +81,9 @@
     <h1 id="gameTitle">Привет! Тапай (сначала 50 раз)</h1>
     <p>Очки: <span id="score">0</span></p>
     <button id="clickButton">Тапай!</button>
-    <button id="upgradeButton" class="hidden">Улучшить</button>
-    <button id="secondUpgradeButton" class="hidden">Вторая улучшалка</button>
-    <button id="nextPageButton" onclick="window.location.href='about.html'" class="hidden">Перейти на вторую страницу</button>
+    <button id="upgradeButton" style="display: none;">Улучшить</button>
+    <button id="secondUpgradeButton" style="display: none;">Вторая улучшалка</button>
+    <button id="nextPageButton" onclick="window.location.href='about.html'" style="display: none;">Перейти на вторую страницу</button>
     <p id="congratsMessage">ТЫ НАТАПАЛ 272 РАЗА! Поздравляем!</p>
     
     <script>
@@ -107,6 +104,11 @@
             // Изменить название игры после 50 кликов
             if (score >= 50 && score < 150) {
                 gameTitle.textContent = "Отлично улучши себя и тапай дальше!";
+            }
+
+                        // Изменить название игры после 150 кликов
+            if (score >= 150 && score < 272) {
+                gameTitle.textContent = "Так держать! Осталось немного..";
             }
 
             // Показываем первую улучшалку после 50 кликов
@@ -132,12 +134,12 @@
 
         upgradeButton.addEventListener('click', () => {
             pointsPerClick *= 2;
-            upgradeButton.classList.add('hidden');  // Убираем первую улучшалку навсегда
+            upgradeButton.style.display = 'none';  // Убираем первую улучшалку навсегда
         });
 
         secondUpgradeButton.addEventListener('click', () => {
             pointsPerClick *= 2;
-            secondUpgradeButton.classList.add('hidden');  // Убираем вторую улучшалку навсегда
+            secondUpgradeButton.style.display = 'none';  // Убираем вторую улучшалку навсегда
         });
     </script>
 
