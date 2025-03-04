@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clicker Game</title>
+    <title>Тапни 272 раза!</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,25 +19,31 @@
         #clickButton:active {
             transform: scale(1.1);
         }
+        #nextPageButton {
+            display: none;
+            font-size: 20px;
+            padding: 15px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <h1>Clicker Game</h1>
     <p>Очки: <span id="score">0</span></p>
-    <button id="clickButton">Кликни меня!</button>
+    <button id="clickButton">Тапай!</button>
     <p>Уровень: <span id="level">1</span></p>
-    <p>Осталось времени: <span id="timer">30</span> сек</p>
+    <button id="nextPageButton" onclick="window.location.href='page2.html'">Перейти на вторую страницу</button>
     
     <script>
         let score = 0;
         let level = 1;
         let pointsPerClick = 1;
-        let timeLeft = 30;
         
         const scoreDisplay = document.getElementById('score');
         const levelDisplay = document.getElementById('level');
-        const timerDisplay = document.getElementById('timer');
         const clickButton = document.getElementById('clickButton');
+        const nextPageButton = document.getElementById('nextPageButton');
         
         clickButton.addEventListener('click', () => {
             score += pointsPerClick;
@@ -48,18 +54,11 @@
                 levelDisplay.textContent = level;
                 pointsPerClick++;
             }
-        });
-        
-        const countdown = setInterval(() => {
-            timeLeft--;
-            timerDisplay.textContent = timeLeft;
             
-            if (timeLeft <= 0) {
-                clearInterval(countdown);
-                clickButton.disabled = true;
-                alert(`Время вышло! Ты набрал ${score} очков.`);
+            if (score >= 272) {
+                nextPageButton.style.display = 'block';
             }
-        }, 1000);
+        });
     </script>
 </body>
 </html>
