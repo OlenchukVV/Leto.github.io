@@ -84,12 +84,12 @@
 
         upgradeButton.addEventListener('click', () => {
             pointsPerClick *= 2;
-            upgradeButton.style.display = 'none';  // Убираем первую улучшалку
+            upgradeButton.remove();  // Убираем первую улучшалку навсегда
         });
 
         secondUpgradeButton.addEventListener('click', () => {
             pointsPerClick *= 2;
-            secondUpgradeButton.style.display = 'none';  // Убираем вторую улучшалку
+            secondUpgradeButton.remove();  // Убираем вторую улучшалку навсегда
         });
     </script>
 </body>
