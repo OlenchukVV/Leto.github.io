@@ -19,7 +19,7 @@
         #clickButton:active {
             transform: scale(1.1);
         }
-        #nextPageButton, #upgradeButton {
+        #nextPageButton, #upgradeButton, #congratsMessage {
             display: none;
             font-size: 20px;
             padding: 15px;
@@ -34,6 +34,7 @@
     <button id="clickButton">Тапай!</button>
     <button id="upgradeButton">Улучшить</button>
     <button id="nextPageButton" onclick="window.location.href='page2.html'">Перейти на вторую страницу</button>
+    <p id="congratsMessage">ТЫ НАТАПАЛ 272 РАЗА! Поздравляем!</p>
     
     <script>
         let score = 0;
@@ -42,6 +43,7 @@
         const clickButton = document.getElementById('clickButton');
         const nextPageButton = document.getElementById('nextPageButton');
         const upgradeButton = document.getElementById('upgradeButton');
+        const congratsMessage = document.getElementById('congratsMessage');
         
         clickButton.addEventListener('click', () => {
             score += pointsPerClick;
@@ -53,6 +55,9 @@
             
             if (score >= 272) {
                 nextPageButton.style.display = 'block';
+                clickButton.style.display = 'none';
+                upgradeButton.style.display = 'none';
+                congratsMessage.style.display = 'block';
             }
         });
         
